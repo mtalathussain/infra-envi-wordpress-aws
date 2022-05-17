@@ -10,3 +10,9 @@ kubectl autoscale deployment wordpress --cpu-percent=50 --min=1 --max=10
 
 4. Run a load for HPA
 kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://wordpress; done"
+
+
+5. Need to decrease in kube-controller-manager:
+--horizontal-pod-autoscaler-initial-readiness-delay 
+
+https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
